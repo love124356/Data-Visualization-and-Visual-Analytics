@@ -1,5 +1,6 @@
 # Data-Visualization-and-Visual-Analytics
 This repo collects all the homework for Data Visualization and Visual Analytics, NYCU
+
 We use the [D3.js](https://d3js.org/) to do these assignments.
 
 ## Homework 1
