@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data Visualization and Visual Analytics Homework 1</title>
+    <link rel="stylesheet" href="HW1.css">
+    <script src="https://d3js.org/d3.v4.js"></script>
+  </head>
+  <body>
+    <h1> Data Visualization and Visual Analytics Homework 1 </h1>
+    <p> Please use the drop-down menu on the left to select the attributes of x-axis and y-axis </p>
+    <div id="my_dataviz">
+      <div id="selectxy"> 
+        <div class="legend"></div>
+        <div class="x">
+          <div>x-asix</div> 
+          <select class="selectx">
+              <option selected value="sepal length">sepal length</option>
+              <option value="sepal width">sepal width</option>
+              <option value="petal length">petal length</option>
+              <option value="petal width">petal width</option>
+          </select>
+        </div>
+        <div class="y">
+          <div>y-asix</div> 
+          <select class="selecty">
+            <option value="sepal length">sepal length</option>
+            <option value="sepal width">sepal width</option>
+            <option selected value="petal length">petal length</option>
+            <option value="petal width">petal width</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <script src="HW1.js"></script>
+  </body>
+</html>

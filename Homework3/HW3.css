@@ -1,0 +1,47 @@
+body {
+  margin: 0px;
+  overflow: hidden;
+  /* height: 100em; */
+}
+
+.homepage {
+  text-align: center;
+  padding: 7em;
+}
+
+.homepage p {
+  margin-top: 1em;
+}
+
+#page3_dataviz, #page2_dataviz, #page4_dataviz, #page5_dataviz {
+  padding: 7em;
+  display: -webkit-flex; 
+  display: flex;
+  -webkit-align-items: center; 
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.labels, .labels5{
+  height: 10em;
+  width: 10em;
+  word-wrap:break-all;
+}
+
+#forToolTip {
+  height: 10em;
+}
+
+.x, .y , .type, .type2, .selectBin, .exp_cnt{
+  margin-left: 40px;
+  margin-bottom: 1em;
+  margin-right: 1em;
+}
+
+#page5_left{
+  margin-right: 1em;
+  width: 10em;
+  height: 10em;
+}

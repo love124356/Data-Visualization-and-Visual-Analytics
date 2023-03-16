@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Data Visualization and Visual Analytics Homework 2</title>
+  <link rel="stylesheet" href="HW3.css">
+  <!-- D3.js -->
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <!-- Load d3-cloud -->
+  <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+  <!-- bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <!-- bootstrap JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <!-- Correlation -->
+  <script src="https://unpkg.com/jeezy@1.12.11/lib/jeezy.min.js"></script>
+</head>
+
+<body>
+  <!-- NavBar begin -->
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="HW3.html">Spotify Tracks Dataset</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="HW3.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link toPage2">Statistics of partial attr.</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link toPage3">Comp. two attr.</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link toPage4">Track popularity</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link toPage5">Correlation</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- NavBar End -->
+
+  <main>
+    <!-- Home Page Begin -->
+    <div class="homepage">
+      <h3 style="text-align: center;">This system is for Data Visualization and Visual Analytics Homework 3</h3>
+      <p> Please click the navbar items to choose the chart you want to show.
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Instructions
+        </button>
+      </p>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel"> Instructions </h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="text-align: left;">
+              <span style="font-weight:bold;">Statistics of partial attr.</span>
+              <div>Histogram of statistics for all attributes. Besides, the artist, tracks, and albums are word cloud
+                (random select top 100 to show)</div>
+              <span style="font-weight:bold;">Comp. two attr.</span>
+              <div>Scatter plot for two attributes and track genre. Users can choose three attr. to change the plot.
+              </div>
+              <span style="font-weight:bold;">Track popularity</span>
+              <div>Barchart of the top 20 most popular artists, tracks and albums. User can choose the track genre.
+              </div>
+              <span style="font-weight:bold;">Correlation</span>
+              <div>The heatmap for 11 types of attributes with discrete values. Users will take a little time to create
+                chart when using it for the first time.</div>
+              <span style="font-weight:bold;">Notice</span>
+              <div>If users click the Home and Spotify Tracks Dataset in the navbar, the page will need to reload the Correlation</div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <figure class="figure">
+        <img
+          src="https://storage.googleapis.com/kaggle-datasets-images/2570056/4372070/fe6dd42ee550bd3dcd153e2f97dda840/dataset-cover.jpg?t=2022-10-22-14-42-29"
+          class="figure-img img-fluid rounded" alt="...">
+        <figcaption class="figure-caption text-end">Figure is from <a
+            href="https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset?resource=download">Kaggle</a>
+        </figcaption>
+      </figure>
+    </div>
+    <!-- Home Page End -->
+    <!-- Draw Page 2 Begin -->
+    <div id="page2_dataviz" style="display: none;">
+      <div id="forToolTip">
+        <div class="type2">
+          <div>Options</div>
+          <select class="form-select selectType2" aria-label="Default select example">
+            <option selected value="popularity">popularity</option>
+            <option value="duration_ms">duration_ms</option>
+            <option value="danceability">danceability</option>
+            <option value="explicit">explicit</option>
+            <option value="key">key</option>
+            <option value="energy">energy</option>
+            <option value="loudness">loudness</option>
+            <option value="mode">mode</option>
+            <option value="speechiness">speechiness</option>
+            <option value="acousticness">acousticness</option>
+            <option value="instrumentalness">instrumentalness</option>
+            <option value="liveness">liveness</option>
+            <option value="valence">valence</option>
+            <option value="tempo">tempo</option>
+            <option value="time_signature">time_signature</option>
+            <option value="artists">artists</option>
+            <option value="album_name">album_name</option>
+            <option value="track_name">track_name</option>
+            <!-- <option value="track_genre">track_genre</option> -->
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-- Draw Page 2 End -->
+    <!-- Draw Page 3 Begin-->
+    <div id="page3_dataviz" style="display: none;">
+      <div id="selectxy">
+        <div class="legend"></div>
+        <div class="x">
+          <div>x-asix</div>
+          <select class="form-select selectx3 w-75" aria-label="Default select example">
+            <option value="popularity">popularity</option>
+            <option value="duration_ms">duration_ms</option>
+            <option selected value="danceability">danceability</option>
+            <option value="key">key</option>
+            <option value="energy">energy</option>
+            <option value="loudness">loudness</option>
+            <option value="mode">mode</option>
+            <option value="speechiness">speechiness</option>
+            <option value="acousticness">acousticness</option>
+            <option value="instrumentalness">instrumentalness</option>
+            <option value="liveness">liveness</option>
+            <option value="valence">valence</option>
+            <option value="tempo">tempo</option>
+            <option value="time_signature">time_signature</option>
+          </select>
+        </div>
+        <div class="y">
+          <div>y-asix</div>
+          <select class="form-select selecty3 w-75" aria-label="Default select example">
+            <option selected value="popularity">popularity</option>
+            <option value="duration_ms">duration_ms</option>
+            <option value="danceability">danceability</option>
+            <option value="key">key</option>
+            <option value="energy">energy</option>
+            <option value="loudness">loudness</option>
+            <option value="mode">mode</option>
+            <option value="speechiness">speechiness</option>
+            <option value="acousticness">acousticness</option>
+            <option value="instrumentalness">instrumentalness</option>
+            <option value="liveness">liveness</option>
+            <option value="valence">valence</option>
+            <option value="tempo">tempo</option>
+            <option value="time_signature">time_signature</option>
+          </select>
+        </div>
+        <div class="type">
+          <div>Track genre</div>
+          <select class="form-select selectType3 w-75" aria-label="Default select example">
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-- Draw Page 3 End -->
+    <!-- Draw Page 4 Begin -->
+    <div id="page4_dataviz" style="display: none;">
+      <div id="">
+        <div class="labels "></div>
+        <div class="type4">
+          <div style="margin-top: 1em;">Options</div>
+          <select class="form-select selectType4" aria-label="Default select example">
+            <option selected value="artists">artists</option>
+            <option value="album_name">album_name</option>
+            <option value="track_name">track_name</option>
+          </select>
+          <div style="margin-top: 1em;">Track genre</div>
+          <select class="form-select selectTrackType4 w-75" aria-label="Default select example">
+            <option selected value="All">All</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-- Draw Page 4 End -->
+    <!-- Draw Page 5 Begin -->
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" style="display: none;" role="status">
+        <span class="sr-only"></span>
+      </div>
+    </div>
+    <div id="page5_dataviz" style="display: none;">
+      <div id="page5_left">
+        <div class="labels5"></div>
+        <div class="legend5"></div>
+      </div>
+    </div>
+    <!-- Draw Page 5 End -->
+  </main>
+  <script src="HW3.js"></script>
+  <script src="HW3_page2.js"></script>
+  <script src="HW3_page3.js"></script>
+  <script src="HW3_page4.js"></script>
+  <script src="HW3_page5.js"></script>
+</body>
+
+</html>

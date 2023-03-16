@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Data Visualization and Visual Analytics Homework 2</title>
+  <link rel="stylesheet" href="HW2.css">
+  <script src="https://d3js.org/d3.v4.js"></script>
+
+</head>
+
+<body>
+  <h1> Data Visualization and Visual Analytics Homework 2 </h1>
+  <p>
+    Please click the texts (attributes) of axis to change the order
+    <button type="button" onclick="window.alert('Please select the first attribute you want to swap, and the name of the attribute you selected will be displayed on the bottom left. \nThen select the second attribute you want to swap, and the plot will update the order of the two attributes.')"> Instruction </button>
+  </p>
+  <div id="my_dataviz">
+    <div id="selectxy">
+      <div class="legend"></div>
+      <div class="x">
+        <div>The first attribute you selected</div>
+        <div class="selectx"> ????? </div>
+        <!-- <select class="selectx">
+              <option selected value="sepal length">sepal length</option>
+              <option value="sepal width">sepal width</option>
+              <option value="petal length">petal length</option>
+              <option value="petal width">petal width</option>
+          </select> -->
+      </div>
+      <div class="y" style="display: none;">
+        <div>The second attribute you selected</div>
+        <div class="selecty"> ????? </div>
+        <!-- <select class="selecty">
+            <option value="sepal length">sepal length</option>
+            <option value="sepal width">sepal width</option>
+            <option selected value="petal length">petal length</option>
+            <option value="petal width">petal width</option>
+          </select> -->
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Instruction</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="white-space:pre-line;">
+          Please select the first attribute you want to swap first, and the name of the attribute you selected will be displayed on the bottom left&#10
+          Then select the second attribute you want to swap, and the plot will update the order of the two attributes&#10
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <script src="HW2.js"></script>
+</body>
+
+</html>
